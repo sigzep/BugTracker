@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<Cars3.Models.Car>   
+@{
+    ViewBag.Title = "CarLister";
+}
+<div class="jumbotron">
+    <h1>MY CARS</h1>
+    <p class="lead">A List of Cars in My Driveway</p>
+    <p><a href="http://google.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<h2>See My Cars Below</h2>
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExternalColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InteriorColor)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ExternalColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.InteriorColor)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<!-- add table coding from notebook here for listing of cars -->
+
+
+<!--- below code is link for my add button or link -->
+<div class="row">
+    @Html.ActionLink("Add Car","AddCar","Car")
+</div>
+
