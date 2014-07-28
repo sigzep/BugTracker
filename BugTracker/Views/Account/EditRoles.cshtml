@@ -25,12 +25,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-warning" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "ListRoles")
+    <a href="@Url.Action("ListRoles")" style="color:blue; font-weight: 800">BACK TO LIST</a>
+    @* @Html.ActionLink("Back to List", "ListRoles") *@
 </div>

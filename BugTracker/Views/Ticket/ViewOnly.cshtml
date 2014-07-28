@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BugTracker.Models.Ticket>
+
+@{
+    ViewBag.Title = "ViewOnly";
+}
+
+<h2>Ticket Listing</h2>
+
+@*  I created this view for View Only - Cannot Create Ticket from here
+    <p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    *@
+<table class="table">
+    <tr>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Ticket Type
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            @Html.DisplayNameFor(model => model.Updated)
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            First Name
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Project
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Ticket Priority
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Ticket Status
+        </th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.Name)
+        </td>
+        <td>
+            @if (item.TicketPriority.Name == "High Priority")
+            {
+                <div style="color:#ff0000">
+                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                </div>
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketStatu.Name)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", new { id = item.Id })" style="color: green; font-weight: 800">Edit-</a>
+               @*  @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "color: green" }) |  *@
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @style = "color: blue;" })
+                @*  @Html.ActionLink("Delete", "Delete", new { id=item.Id }) *@
+        </td>
+    </tr>
+}
+</table>
+

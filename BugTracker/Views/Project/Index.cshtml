@@ -5,18 +5,22 @@
    @* Layout = "ProjectController"; *@
 }
 
-<h2>Index</h2>
+<h2>Project Listing</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" style="color:green; font-weight: 800">CREATE NEW</a>
+   @*  @Html.ActionLink("Create New", "Create")  *@
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th style="color: black; background-color:#F0F0F0; font-size: 15px;">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
-    </tr>
+        <th style ="color: black; background-color:#F0F0F0; font-size: 15px;">
+            @Html.DisplayNameFor(model => model.Description)
+            </th>
+        <th style="color: black; background-color:#F0F0F0;"></th>
+</tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -24,9 +28,16 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit",new { id=item.Id })" style="color:green; font-weight: 800">EDIT -</a>
+            @* @Html.ActionLink("Edit", "Edit", new { id=item.Id }) @(" | ") *@
+            <a href="@Url.Action("Details",new { id=item.Id })" style="color:blue; font-weight: 800">DETAILS -</a>
+            @* @Html.ActionLink("Details", "Details", new { id=item.Id }) @(" | ") *@
+            <a href="@Url.Action("Delete",new { id=item.Id })" style="color:red; font-weight: 800"> DELETE</a>
+            @* @Html.ActionLink("Delete", "Delete", new { id=item.Id }) *@
+          
         </td>
     </tr>
 }

@@ -4,95 +4,99 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Ticket Details</h2>
 
 <div>
     <h4>Ticket</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+           Title:
+           @* @Html.DisplayNameFor(model => model.Title) *@
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.Title)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Description:
+            @* @Html.DisplayNameFor(model => model.Description) *@
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.Description)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
+        
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Owner:
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
-        </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.AspNetUser.FirstName)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser1.FirstName)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Assigned To:
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.AspNetUser1.FirstName)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.Name)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Project:
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.Project.Name)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Priority:
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.TicketPriority.Name)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketStatu.Name)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Status:
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.TicketStatu.Name)
         </dd>
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Type:
+        </dt>
+        <dd style="font-size:15px; padding-bottom:.7em;">
+            @Html.DisplayFor(model => model.TicketType.Name)
+        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Comment:
+            @* @Html.DisplayNameFor(model => model.Created) *@
+        </dt>
+       
+       
+        @foreach (var tempcomment in Model.TicketComments)
+        {
+            <dd style="font-size:15px; padding-bottom:.7em;">
+            @Html.DisplayFor(nn => tempcomment.Comment)
+            </dd> 
+        }
+            
+
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Created:
+            @* @Html.DisplayNameFor(model => model.Created) *@
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TicketType.Name)
+        <dd style="font-size:15px; padding-bottom:.7em;">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Updated:
+            @* @Html.DisplayNameFor(model => model.Updated) *@
+        </dt>
+        <dd style="font-size:15px; padding-bottom:.7em;">
+            @Html.DisplayFor(model => model.Updated)       
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", new { id = Model.Id })" style="color:green; font-weight: 800">EDIT -</a>
+   @* @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | *@
+    <a href="@Url.Action("Index")" style="color:blue; font-weight: 800">BACK TO LIST</a>
+   @*  @Html.ActionLink("Back to List", "Index") *@
 </p>

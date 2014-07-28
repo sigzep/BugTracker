@@ -18,7 +18,7 @@ namespace BugTracker.Models
         public int TicketId { get; set; }
         public string DataFilePath { get; set; }
         public string UserId { get; set; }
-        public byte[] Created { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
         public string Description { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }

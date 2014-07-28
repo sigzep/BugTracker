@@ -17,12 +17,15 @@ namespace BugTracker.Models
         public AspNetUser()
         {
             this.ProjectUsers = new HashSet<ProjectUser>();
-            this.TicketAttachments = new HashSet<TicketAttachment>();
-            this.TicketComments = new HashSet<TicketComment>();
             this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketNotifications = new HashSet<TicketNotification>();
+            this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
+            this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            this.AspNetRoles = new HashSet<AspNetRole>();
             this.Tickets = new HashSet<Ticket>();
             this.Tickets1 = new HashSet<Ticket>();
+            this.TicketComments = new HashSet<TicketComment>();
+            this.TicketAttachments = new HashSet<TicketAttachment>();
         }
     
         public string Id { get; set; }
@@ -41,11 +44,14 @@ namespace BugTracker.Models
         public string UserName { get; set; }
     
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
-        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
-        public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<TicketHistory> TicketHistories { get; set; }
         public virtual ICollection<TicketNotification> TicketNotifications { get; set; }
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<Ticket> Tickets1 { get; set; }
+        public virtual ICollection<TicketComment> TicketComments { get; set; }
+        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
     }
 }

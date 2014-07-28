@@ -103,6 +103,7 @@ namespace BugTracker.Controllers
         }
 
         // GET: /Account/ListRoles
+        [Authorize(Roles = "Administrator")]
         public ActionResult ListRoles()
         {
             var Db = new ApplicationDbContext();
@@ -117,6 +118,7 @@ namespace BugTracker.Controllers
         }
 
         // This is the GET function for DeleteRoles
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteRoles(string id)
         {
             if (id == "" || id == null)
@@ -133,7 +135,7 @@ namespace BugTracker.Controllers
 
         // This is the SET or POST for DeleteRoles
         [HttpPost]
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoles(RolesViewModel model)
         {
@@ -147,6 +149,7 @@ namespace BugTracker.Controllers
         }
 
         // This is the GET function for EditRoles
+        [Authorize(Roles = "Administrator")]
         public ActionResult EditRoles(string id)
         {
             if (id == "" || id == null)
@@ -163,7 +166,7 @@ namespace BugTracker.Controllers
 
         // This is the SET or POST for EditRoles
          [HttpPost]
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult EditRoles(RolesViewModel model)
         {
@@ -178,43 +181,66 @@ namespace BugTracker.Controllers
         }
 
         // This is the GET for CreateRoles
+        [Authorize(Roles = "Administrator")]
         public ActionResult CreateRoles()
         {
             return View();
         }
 
+        // POST: /Users/Create..
+        //  This code is for assigning roles to multiple users
+        /*
+        [HttpPost] 
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(EditUserViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var user = new ApplicationUser() { UserName = viewModel.UserName };
+                IdentityResult resultUser = manager.Create(user, viewModel.Password);
+
+                foreach (string role in viewModel.SelectedRoles)
+                {
+                    var result = manager.AddToRole(user.Id, role);
+                }
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
+        }
+        */
         // This is the SET or POST for CreateRoles
         [HttpPost]
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRoles(RolesViewModel model)
         {
             if (ModelState.IsValid)
             {
+                
                 //  These 3 lines could replace the next 3 lines
-                //ApplicationDbContext db = new ApplicationDbContext();
-                //var result = db.Roles.Add(new IdentityRole(model.RoleName));
-                //db.SaveChanges();
+                ApplicationDbContext db = new ApplicationDbContext();
+                db.Roles.Add(new IdentityRole(model.RoleName));
 
-                var rm = new RoleManager<IdentityRole>(
+
+                /* db.Roles.Add(new IdentityRole(model.RoleName)); */
+                db.SaveChanges();
+
+                return RedirectToAction("ListRoles"); 
+          
+                /*
+                 * var rm = new RoleManager<IdentityRole>(
                     new RoleStore<IdentityRole>(new ApplicationDbContext()));
                 var result = rm.Create(new IdentityRole(model.RoleName));
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("ListRoles"); 
-                }
-                else
-                {
-                    AddErrors(result);
-                }
+                */
+                
             }
             return View(model);
         }
 
         // GET: /Account/ListUsers
-        //[Authorize(Roles="Administrator")]
-
+        
+        [Authorize(Roles="Administrator")]
         public ActionResult ListUsers()
         {
             var Db = new ApplicationDbContext();

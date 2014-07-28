@@ -1,22 +1,60 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+    if (User.IsInRole("Administrator"))
+    {
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">Administrator</a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                <li>@Html.ActionLink("Roles", "EditRoles", "Account")</li>
+            </ul>
+        </li>
+    }
+    else if (User.IsInRole("Submitter"))
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">Submitter</a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Tickets", "ViewOnly", "Ticket")</li>
+            </ul> 
+        </li>
+                  @*   <li><a href="#">@Html.ActionLink("Create Tickets", "Create", "Ticket")</a></li> *@
+ 
+
+    }
+    else if (User.IsInRole("Developer"))
+    {
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">Developer</a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Tickets", "ViewOnly", "Ticket")</li>
+                <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+            </ul>
+        </li>
+    }
+
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+   
+        <ul class="nav navbar-nav navbar-right">
+            <li >
+                <a href="#">@Html.Raw("Hello " + User.Identity.GetUserName() + "!") </a>
+                @*Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) *@ 
+                 </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+        }
+        }
+        else
+        {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+        }

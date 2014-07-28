@@ -16,17 +16,17 @@ namespace BugTracker.Models
     {
         public Ticket()
         {
-            this.TicketAttachments = new HashSet<TicketAttachment>();
-            this.TicketComments = new HashSet<TicketComment>();
             this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketNotifications = new HashSet<TicketNotification>();
+            this.TicketComments = new HashSet<TicketComment>();
+            this.TicketAttachments = new HashSet<TicketAttachment>();
         }
     
         public int Id { get; set; }
         public string OwnerId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public byte[] Created { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
         public Nullable<System.DateTime> Updated { get; set; }
         public string AssignToUserId { get; set; }
         public int ProjectId { get; set; }
@@ -37,12 +37,12 @@ namespace BugTracker.Models
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual Project Project { get; set; }
-        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
-        public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<TicketHistory> TicketHistories { get; set; }
         public virtual ICollection<TicketNotification> TicketNotifications { get; set; }
         public virtual TicketPriority TicketPriority { get; set; }
         public virtual TicketStatu TicketStatu { get; set; }
         public virtual TicketType TicketType { get; set; }
+        public virtual ICollection<TicketComment> TicketComments { get; set; }
+        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
     }
 }

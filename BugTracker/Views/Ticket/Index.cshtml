@@ -1,87 +1,138 @@
-﻿@model IEnumerable<BugTracker.Models.Ticket>
+﻿@using PagedList.Mvc;   @* import this so we get our HTML Helper *@
+@using PagedList;       @* import this so we can cast our list to IpageedList *@
+
+@* @model IEnumerable<BugTracker.Models.Ticket> *@  
+@model IPagedList<BugTracker.Models.Ticket>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Ticket Listing</h2>
+@* search box code below, searching by ticket*@
+@using (Html.BeginForm("Index","Ticket",FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-offset-9 col-md-3">
+            <div class="input-group">
+                @Html.TextBox("search", ViewBag.Search as string, new { placeholder = "Search by Ticket", @class = "form-control" })
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" style="color:green; font-weight: 800">CREATE NEW</a>
+    @* @Html.ActionLink("Create New", "Create") *@
 </p>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
+        <th style="background-color:#F0F0F0; font-size: 13px;">
+            @Html.ActionLink("Title", "Index", new { sortOrder = "Title", search = ViewBag.Search, asc = !ViewBag.ascending },
+            new { @style = "color:blue;" })
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Ticket Type
+            @* @Html.DisplayNameFor(model => model.TicketType.Name) *@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            First Name
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Updated)
+        <th style=" background-color:#F0F0F0; font-size: 13px;">
+            @Html.ActionLink("Created", "Index", new { sortOrder = "Created", search = ViewBag.Search, asc = !ViewBag.ascending },
+                     new { @style = "color:blue;" })
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+        <th style=" background-color:#F0F0F0; font-size: 13px;">
+            @Html.ActionLink("Updated", "Index", new { sortOrder = "Updated", search = ViewBag.Search, asc = !ViewBag.ascending },
+                     new { @style = "color:blue;" })
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser1.FirstName)
+        <th style="color: black; background-color:#F0F0F0; font-size: 13px;">
+            Project
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Project.Name)
+        <th style=" background-color:#F0F0F0; font-size: 13px;">
+            @Html.ActionLink("Ticket Priority", "Index", new { sortOrder = "PriorityId", search = ViewBag.Search, asc = !ViewBag.ascending },
+                     new { @style = "color:blue;" })
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+        <th style=" background-color:#F0F0F0; font-size: 13px;">
+            @Html.ActionLink("Ticket Status", "Index", new { sortOrder = "StatusId", search = ViewBag.Search, asc = !ViewBag.ascending },
+                     new { @style = "color:blue;" })
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketStatu.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
-        </th>
-        <th></th>
+        <th style=" background-color:#F0F0F0; font-size: 13px;"></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Updated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser1.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketPriority.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketStatu.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketType.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
+            <td>
+                @if (item.TicketPriority.Name == "High Priority")
+                {
+                    <div style="color:#ff0000">
+                        @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                    </div>
+                }
+                else
+                {
+                     @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketStatu.Name)
+            </td>
+            <td>
+                @if (User.IsInRole("Administrator"))
+                {
+                 <a href="@Url.Action("Edit",new { id=item.Id })" style="color:green; font-weight: 800">EDIT -</a>
+                @* @Html.ActionLink("Edit", "Edit", new { id=item.Id }) @(" | ") *@
+                 <a href="@Url.Action("Details",new { id=item.Id })" style="color:blue; font-weight: 800">DETAILS -</a>   
+                 @* @Html.ActionLink("Details", "Details", new { id=item.Id }) @(" | ") *@
+                 <a href="@Url.Action("Delete",new { id=item.Id })" style="color:red; font-weight: 800"> DELETE</a>   
+                 @* @Html.ActionLink("Delete", "Delete", new { id=item.Id }) *@
+                }
+                else if (User.IsInRole("Developer"))
+                {
+                <a href="@Url.Action("Edit",new { id=item.Id })" style="color:green; font-weight: 800">EDIT -</a>
+               @*  @Html.ActionLink("Edit", "Edit", new { id = item.Id })  @(" | ") *@
+                <a href="@Url.Action("Details",new { id=item.Id })" style="color:blue; font-weight: 800">DETAILS</a>   
+               @* @Html.ActionLink("Details", "Details", new { id = item.Id })  @(" | ") *@
+                }
+                else if (User.IsInRole("Submitter"))
+                {
+                <a href="@Url.Action("Details",new { id=item.Id })" style="color:blue; font-weight: 800">DETAILS</a>      
+                @* @Html.ActionLink("Details", "Details", new { id = item.Id }) *@
+                }
+                
+            </td>
+        </tr>
 }
 
 </table>
+@if(Model.PageCount > 1)
+{
+    <div id="Paging" style="text-align: center">
+        @Html.PagedListPager((PagedList.IPagedList)Model, page => Url.Action("Index", new { page = page, search = ViewBag.Search, sortOrder = ViewBag.SortOrder }))
+    </div>
+}
+    

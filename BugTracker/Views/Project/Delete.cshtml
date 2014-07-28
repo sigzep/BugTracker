@@ -5,7 +5,7 @@
     @* Layout = "ProjectController"; *@
 }
 
-<h2>Delete</h2>
+<h2>Delete Projects</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -13,11 +13,20 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Name:
+          @*  @Html.DisplayNameFor(model => model.Name) *@
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
+        </dd>
+
+         <dt>
+            Description:
+      @*    @Html.DisplayNameFor(model => model.Description) *@
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>
@@ -26,8 +35,11 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <!-- <input type="submit" value="Delete" class="btn btn-danger" /> -->
+            <a href="@Url.Action("Delete")" style="color:red; font-weight: 800">DELETE - </a>
+            <a href="@Url.Action("Index")" style="color:blue; font-weight: 800">BACK TO LIST</a>
+          @*  @Html.ActionLink("Back to List", "Index") *@
         </div>
     }
 </div>

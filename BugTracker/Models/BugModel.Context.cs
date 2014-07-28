@@ -28,13 +28,18 @@ namespace BugTracker.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectUser> ProjectUsers { get; set; }
-        public virtual DbSet<TicketAttachment> TicketAttachments { get; set; }
-        public virtual DbSet<TicketComment> TicketComments { get; set; }
         public virtual DbSet<TicketHistory> TicketHistories { get; set; }
         public virtual DbSet<TicketNotification> TicketNotifications { get; set; }
         public virtual DbSet<TicketPriority> TicketPriorities { get; set; }
-        public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<TicketStatu> TicketStatus { get; set; }
         public virtual DbSet<TicketType> TicketTypes { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<TicketComment> TicketComments { get; set; }
+        public virtual DbSet<TicketAttachment> TicketAttachments { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

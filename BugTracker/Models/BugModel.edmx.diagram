@@ -8,31 +8,39 @@
         <EntityTypeShape EntityType="BugTrackerModel.AspNetUser" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.Project" Width="1.5" PointX="3.75" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.ProjectUser" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BugTrackerModel.TicketAttachment" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BugTrackerModel.TicketComment" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.TicketHistory" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.TicketNotification" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.TicketPriority" Width="1.5" PointX="3.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BugTrackerModel.Ticket" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.TicketStatu" Width="1.5" PointX="3.75" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BugTrackerModel.TicketType" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
         <AssociationConnector Association="BugTrackerModel.FK_ProjectUsers_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketAttachment_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketComments_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BugTrackerModel.FK_TicketHistory_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BugTrackerModel.FK_TicketNotifications_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_AspNetUsers1" ManuallyRouted="false" />
         <AssociationConnector Association="BugTrackerModel.FK_ProjectUsers_Projects" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_Projects" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketAttachment_Tickets" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketComments_Tickets" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketHistory_Tickets" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_TicketNotifications_Tickets" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketPriorities" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketTypes" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="BugTrackerModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="BugTrackerModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="BugTrackerModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="5" />
+        <AssociationConnector Association="BugTrackerModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BugTrackerModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BugTrackerModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="BugTrackerModel.Ticket" Width="1.5" PointX="6" PointY="15.5" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_AspNetUsers" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_AspNetUsers1" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_Projects" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketHistory_Tickets" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketNotifications_Tickets" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketPriorities" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketStatus" />
+        <AssociationConnector Association="BugTrackerModel.FK_Tickets_TicketTypes" />
+        <EntityTypeShape EntityType="BugTrackerModel.TicketComment" Width="1.5" PointX="8.25" PointY="13.875" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketComments_AspNetUsers" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketComments_Tickets" />
+        <EntityTypeShape EntityType="BugTrackerModel.TicketAttachment" Width="1.5" PointX="11.25" PointY="13.75" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketAttachment_AspNetUsers" />
+        <AssociationConnector Association="BugTrackerModel.FK_TicketAttachment_Tickets" />
+        <EntityTypeShape EntityType="BugTrackerModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BugTrackerModel.sysdiagram" Width="1.5" PointX="5.375" PointY="3.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

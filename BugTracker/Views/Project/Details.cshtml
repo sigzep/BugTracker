@@ -5,23 +5,32 @@
     @* Layout = "ProjectController"; *@
 }
 
-<h2>Details</h2>
+<h2>Project Details</h2>
 
 <div>
     <h4>Project</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Name:
+            @*  @Html.DisplayNameFor(model => model.Name)  *@
         </dt>
-
-        <dd>
+        <dd style="font-size:15px; padding-bottom:.7em;">
             @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt style="text-align: left; font-size: 15px; padding-bottom:.7em; background-color:#F0F0F0;">
+            Description:
+            @*  @Html.DisplayNameFor(model => model.Description)  *@
+        </dt>
+        <dd style="font-size:15px; padding-bottom:.7em;">
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit")" style="color:green; font-weight: 800">EDIT -</a>
+    @* @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |  *@
+    <a href="@Url.Action("Index")" style="color:blue; font-weight: 800">BACK TO LIST</a>
+    @*  @Html.ActionLink("Back to List", "Index")  *@
 </p>

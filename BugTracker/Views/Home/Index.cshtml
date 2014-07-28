@@ -2,42 +2,151 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
-@Html.ActionLink("List Users", "ListUsers", "Account")
-<div class="row">
-    <div class="col-md-2">
-        @Html.ActionLink("List Roles", "ListRoles", "Account")
+
+<section id="slider-wrapper" class="layer-slider-wrapper">
+    <div id="layerslider" style="width:100%;height:500px;">
+        <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
+            <!-- slide background -->
+            <img src="~/images/slider/fw-1.jpg" class="ls-bg" alt="Slide background" />
+
+            <!-- Right Image -->
+            
+            <img src="~/images/prv/GirlBugNew.png" class="ls-l" style="top:58%; left:60%;" data-ls="offsetxin:0;offsetyin:250;durationin:950;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" alt="Image layer">
+            <img src="~/images/prv/BugMagnifyTracks.png" class="ls-l" style="top:53%; left:82%;" data-ls="offsetxin:0;offsetyin:250;durationin:950;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" alt="Image layer">
+            <!-- Left Text -->
+            <h3 class="ls-l title" style="width:500px; top:25%; left:80px; font-size: 45px; color: #000;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">Project, Bug & Resolution Tracking Application</h3>
+            <h3 class="ls-l subtitle" style="top:46%; left:80px; font-size: 33px; font-weight: bolder; " data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">Efficiency Starts Here!</h3>
+            <ul class="ls-l text-standard" style="width:500px; top:65%; left:80px; font-size: 22px; color:#000" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:2500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <li style="padding-bottom:.5em;">Track Software Problems and Resolutions</li>
+                <li style="padding-bottom:.5em;">Centralized Overview of Development Projects</li>
+                <li style="padding-bottom:.5em;">Log and Track Bugs </li>
+                <li>Produce Detailed Reports </li>
+            </ul>
+            <a href="@Url.Action("Login","Account")" class="btn btn-two btn-lg ls-l" style="top:85%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:3500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" target="_parent">Demo</a>
+        </div>
+
+        <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
+            <!-- slide background -->
+            <img src="~/images/slider/fw-1.jpg" class="ls-bg" alt="Slide background" />
+
+            <!-- Right Image -->
+            <img src="~/images/prv/human-img-4.png" class="ls-l" style="top:48%; left:70%;" data-ls="offsetxin:0;offsetyin:250;durationin:950;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" alt="Image layer">
+          
+            <!-- Left Text -->
+            <h3 class="ls-l title" style="width:500px; font-size: 45px; color: black; top:15%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">We Locate! Evaluate! Exterminate!</h3>
+            <h3 class="ls-l list-item" style="top:28%; left:80px;" data-ls="offsetxin: left; rotatein: 90;durationin:1000;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <i class="fa fa-check-circle-o"></i> Customized to Satisfy Your Business Needs</h3>
+            <h3 class="ls-l list-item" style="top:35%; left:80px;" data-ls="offsetxin: left; rotatein: 90;durationin:1000;durationin:1000;delayin:2000;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <i class="fa fa-check-circle-o"></i> Easy Ticket and Project Creation and Tracking</h3>
+            <h3 class="ls-l list-item" style="top:42%; left:80px;" data-ls="offsetxin: left; rotatein: 90;durationin:1000;durationin:1000;delayin:2500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <i class="fa fa-check-circle-o"></i> Easy Sorting and Searching for Reports</h3>
+            <h3 class="ls-l list-item" style="top:49%; left:80px;" data-ls="offsetxin: left; rotatein: 90;durationin:1000;durationin:1000;delayin:3000;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <i class="fa fa-check-circle-o"></i> Full documentation. Customization made easier</h3>
+            <p class="ls-l text-standard" style="width:500px; top:65%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:3500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                BugTracker web based bug tracking system. It helps you manage software development. 
+                It uses a database to store issues, bugs to be fixed, and features to be added. 
+                Most people are just like me, have limited bug-storing slots in their brains.
+            </p>
+            <a href="@Url.Action("Login","Account")" class="btn btn-two btn-lg ls-l" style="top:85%; left:80px; border-radius:5px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:3500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" target="_parent">Demo</a>
+            <!-- <a href="https://wrapbootstrap.com/theme/boomerang-multipurpose-template-WB021609D" class="btn btn-two btn-lg ls-l" style="top:84%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:4000;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" target="_blank">Learn more</a>  -->
+        </div>
     </div>
-</div> 
+</section>
+<!--
     <div class="row">
         <div class="col-md-4">
-            <div style="color:#CF0000">
+            <div style="color:#000000">
                 <h2>Getting started</h2>
             </div>
-
             <p>
                 ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
                 enables a clean separation of concerns and gives you full control over markup
                 for enjoyable, agile development.
             </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+   
         </div>
         <div class="col-md-4">
-            <div style="color:#CF0000">
+            <div style="color:#000000">
                 <h2>Get more libraries</h2>
             </div>
             <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+          
         </div>
         <div class="col-md-4">
-            <div style="color:#CF0000">
+            <div style="color:#000000">
                 <h2>Web Hosting</h2>
             </div>
             <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+           
         </div>
     </div>
+    -->
+<!--- Slider Code, but I do not want to use  
+<section class="slice relative animate-hover-slide bg-3">
+<div class="w-section inverse">
+    <div class="container">
+        <h3 class="section-title">Our Social Media</h3>
+        <div id="carouselWork" class="carousel-3 slide animate-hover-slide">
+    --->
+            <!-- Wrapper for slides -->
+<!--   slider code continued but I don't want to use  
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="w-box inverse">
+                                <div class="figure">
+                                    <a href="http://plus.google.com/people/"><img alt="" src="~/images/prv/GooglePlus.jpg" class="img-responsive" style="height:130px; width:140px"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <h2>Follow Us on Google Plus</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="w-box inverse">
+                                <div class="figure">
+                                    <a href="https://www.linkedin.com/reg/join-pprofile?lnk=lnk_pprofile&locale=en_US&authToken=eDPp&trk=ndir_viewmore&_ed=0_dfHO8ItrV_BTL_0P7o4SJRdSf3s7PA64b2wUbD5tRnVt1xr0t0ZUqIgoujj7RAh3ubBgSWBHcban8YqrLnSlrR8VRFXkdC3fV4-yQLLHFPS&authType=name&key=16029946"><img alt="" src="~/images/prv/Linkedin.jpg" class="img-responsive" style="height:130px; width:140px"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <h2>Follow Us on Linked In</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="w-box inverse">
+                                <div class="figure">
+                                    <a href="https://twitter.com/search?q=chris%20zepkowski&src=typd"><img alt="" src="~/images/prv/Twitter.jpg" class="img-responsive" style="height:130px; width:140px"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <h2>Follow us on Twitter</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="w-box inverse">
+                                <div class="figure">
+                                    <a href="http://www.facebook.com/"><img alt="" src="~/images/prv/Facebook.jpg" class="img-responsive" style="height:130px; width:140px"></a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <h2>Follow us on Facebook</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+End of the Slider code commented out from above  -->
